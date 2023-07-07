@@ -1,22 +1,22 @@
 import { Song } from '@/types';
 
 import usePlayer from './usePlayer';
+import useSubscribeModal from './useSubscribeModal';
 import useAuthModal from './useAuthModal';
 import { useUser } from './useUser';
-import useSubscribeModal from './useSubscribeModal';
 
 const useOnPlay = (songs: Song[]) => {
-  const subscribeModal = useSubscribeModal();
   const player = usePlayer();
+  const subscribeModal = useSubscribeModal();
   const authModal = useAuthModal();
-  const { user, subscription } = useUser();
+  const { subscription, user } = useUser();
 
   const onPlay = (id: string) => {
     if (!user) {
       return authModal.onOpen();
     }
 
-    if (subscription) {
+    if (!subscription) {
       return subscribeModal.onOpen();
     }
 

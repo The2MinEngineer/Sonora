@@ -20,7 +20,7 @@ const SongItem: React.FC<SongItemProps> = ({ data, onClick }) => {
       onClick={() => onClick(data.id)}
       className="
         relative 
-        group 
+        group
         flex 
         flex-col 
         items-center 
